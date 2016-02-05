@@ -22,7 +22,7 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: No, because the ones passed into init are optionals, whereas the instance variables are unwrapped, so they cannot be nil. 
 
 
 //: ## Q2: Variable Types and Function Types
@@ -30,23 +30,24 @@ class Words {
         let reversedWords = words.map() {String($0.characters.reverse())}
         var numElements = words.count
         
-        for let i = 0; i < numElements; i++ {
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: Compiler doesn't like it becuase let defines a constant, but you need to increment i. Bug is that it doesn't ever return true.
 
 
 //: ## Q3: More Functions and Object Initialization
     class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
+        var countLetters = [Character : Int]() //Line X
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
         
